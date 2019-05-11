@@ -1,0 +1,156 @@
+@import './var.scss';
+@import '../mixins/border.scss';
+@import '../mixins/ellipsis.scss';
+
+// 遍历生成padding和margin(2-100之间的偶数)
+@for $size from 0 through 100{
+  @if $size%2 == 0 {
+    .p-#{$size} { padding: $size + $unit }
+    .pt-#{$size} { padding-top: $size + $unit }
+    .pb-#{$size} { padding-bottom: $size + $unit }
+    .pl-#{$size} { padding-left: $size + $unit }
+    .pr-#{$size} { padding-right: $size + $unit }
+    .ptb-#{$size} { padding-top: $size + $unit; padding-bottom: $size + $unit }
+    .plr-#{$size} { padding-left: $size + $unit; padding-right: $size + $unit }
+    .m-#{$size} { margin: $size + $unit }
+    .mt-#{$size} { margin-top: $size + $unit }
+    .mb-#{$size} { margin-bottom: $size + $unit }
+    .ml-#{$size} { margin-left: $size + $unit }
+    .mr-#{$size} { margin-right: $size + $unit }
+    .mtb-#{$size} { margin-top: $size + $unit; margin-bottom: $size + $unit }
+    .mlr-#{$size} { margin-left: $size + $unit; margin-right: $size + $unit }
+  }
+}
+
+// 字体大小
+@for $size from 10 through 40{
+  .fs-#{$size} { font-size: $size + $unit; }
+}
+@for $size from 0 through 20{
+  .z-index-#{$size} { z-index: $size; }
+}
+
+// 字体粗细
+$fontWeights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+@each $weight in $fontWeights {
+  .fw-#{$weight} { font-weight: $weight; }
+}
+
+// 宽高
+@for $size from 2 through 500{
+  @if $size%2 == 0 {
+    .w-#{$size} { width: $size + $unit !important}
+    .h-#{$size} { height: $size + $unit !important}
+    .w-h-#{$size} { width: $size + $unit; height: $size + $unit !important}
+    .l-h-#{$size} { line-height: $size + $unit !important}
+  }
+}
+
+// 圆角大小
+@for $size from 1 through 50{
+  .radius-#{$size} { border-radius: $size + $unit }
+}
+.radius{
+  border-radius: 50%;
+}
+
+// 颜色
+$color-list: (
+  'red': $red,
+  'red-light': $red-light,
+  'red-dark': $red-dark,
+  'green': $green,
+  'green-light': $green-light,
+  'green-dark': $green-dark,
+  'blue': $blue,
+  'blue-light': $blue-light,
+  'blue-dark': $blue-dark,
+  'orange': $orange,
+  'orange-light': $orange-light,
+  'orange-dark': $orange-dark,
+  'pink': $pink,
+  'pink-light': $pink-light,
+  'pink-dark': $pink-dark,
+  'gray': $gray,
+  'gray-light': $gray-light,
+  'gray-dark': $gray-dark,
+  'black': $black,
+  'black-light': $black-light,
+  'black-dark': $black-dark,
+  'white': $white
+);
+@each $key,$color in $color-list {
+  .#{$key} { color: $color; }
+  .#{$key}-bg { background-color: $color; }
+}
+
+.w-full{
+  width: 100%;
+}
+.h-full{
+  height: 100%;
+}
+.w-h-full{
+  width: 100%;
+  height: 100%;
+}
+
+@for $size from -30 through 50{
+  .top-#{$size} { top: $size + $unit }
+  .bottom-#{$size} { bottom: $size + $unit }
+  .left-#{$size} { left: $size + $unit }
+  .right-#{$size} { right: $size + $unit }
+}
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+
+.y-scroll{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.x-scroll{
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.scroll{
+  overflow: scroll;
+}
+.overflow-auto{
+  overflow: auto;
+}
+.hidden{
+ overflow: hidden;
+}
+.border-box{
+  box-sizing: border-box;
+}
+
+.border-bottom{
+  @include border-bottom();
+}
+.ellipsis{
+  @include ellipsis();
+}
+.ellipsis2{
+  @include multi-ellipsis(2);
+}
+.ellipsis3{
+  @include multi-ellipsis(3);
+}
+.pointer{
+  cursor: pointer;
+}
+
+.pos-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
